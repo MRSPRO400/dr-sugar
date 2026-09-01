@@ -225,6 +225,170 @@
                 filter: blur(0);
             }
         }
+        /* ==========================================
+   CELEBRATION EFFECTS
+========================================== */
+
+.confetti {
+    position: fixed;
+    top: -30px;
+    z-index: 9999;
+    pointer-events: none;
+
+    color: #d4af37;
+    font-size: 22px;
+
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            rotate(720deg)
+            scale(.4);
+        opacity: 0;
+    }
+}
+
+
+/* ------------------------------------------
+   SPARKLES
+------------------------------------------ */
+
+.sparkle {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #f6df85;
+
+    pointer-events: none;
+    z-index: 9998;
+
+    box-shadow:
+        0 0 8px #f6df85,
+        0 0 18px #d4af37;
+
+    animation:
+        sparkleFloat 5s ease-in-out forwards;
+}
+
+@keyframes sparkleFloat {
+
+    0% {
+        opacity: 0;
+        transform: scale(.2);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+
+    60% {
+        opacity: .8;
+        transform: scale(.8);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translateY(-120px)
+            scale(.1);
+    }
+}
+
+
+/* ------------------------------------------
+   SCROLL REVEAL
+------------------------------------------ */
+
+section .section-content {
+    opacity: 0;
+    transform: translateY(70px);
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+section.visible .section-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ------------------------------------------
+   BUTTON GLOW
+------------------------------------------ */
+
+.enter-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.enter-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: .8s;
+}
+
+.enter-btn:hover::before {
+    left: 140%;
+}
+
+
+/* ------------------------------------------
+   ACCESSIBILITY
+------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+                                }
+        
 
         @media (max-width: 600px) {
             .hero {
